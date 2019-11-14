@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #------------------------------------------------------------------------------------------------------------------
-wget https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/helm-script/helm-v2.15.2-linux-amd64.tar.gz
 tar -zxvf helm-v2.15.2-linux-amd64.tar.gz
 mv ./linux-amd64/helm /usr/local/bin/ 
 chmod +x /usr/local/bin/helm

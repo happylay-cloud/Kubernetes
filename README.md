@@ -35,4 +35,12 @@ curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kub
 
 curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/k8s-node.sh | sh
 
+# 安装helm-只适用于v1.15.x版本
 
+1.第一步
+wget https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/helm-script/helm-v2.15.2-linux-amd64.tar.gz
+
+2.第二步
+curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/helm-script/helm.sh | sh
+
+网络问题,第二步需要多次执行才能安装成功
