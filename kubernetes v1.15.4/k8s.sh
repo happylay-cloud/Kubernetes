@@ -20,7 +20,7 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 #------------------------------------------------------------------------------------------------------------
 # 安装docker及kubelet
 # 在 master 节点和 worker 节点都要执行
-curl -sSL https://github.com/happylay-cloud/Kubernetes/blob/master/kubernetes%20v1.15.4/install-script/install-kubelet.sh | sh
+curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/install-kubelet.sh | sh
 
 #------------------------------------------------------------------------------------------------------------
 #-------------------------------------------初始化 master 节点------------------------------------------------
