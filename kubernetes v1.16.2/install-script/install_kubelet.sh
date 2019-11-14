@@ -23,7 +23,7 @@ docker-engine
 yum install -y yum-utils \
 device-mapper-persistent-data \
 lvm2
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+yum-config-manager --add-repo https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/docker-ce.repo
 
 # 安装并启动 docker
 yum install -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io

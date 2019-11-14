@@ -18,8 +18,9 @@ hostnamectl status
 # 设置 hostname 解析
 echo "127.0.0.1   $(hostname)" >> /etc/hosts
 #-----------------------------------------------------------------------------------------------------------------------------
+# 安装docker及kubelet
 # 在 master 节点和 worker 节点都要执行
-curl -sSL https://kuboard.cn/install-script/v1.16.2/install_kubelet.sh | sh
+curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install_kubelet.sh | sh
 
 #-----------------------------------------------------------------------------------------------------------------------------
 # 只在 worker 节点执行
