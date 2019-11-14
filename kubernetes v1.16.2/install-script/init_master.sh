@@ -39,6 +39,6 @@ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 # 安装 calico 网络插件
 # 参考文档 https://docs.projectcalico.org/v3.9/getting-started/kubernetes/
 rm -f calico-3.9.2.yaml
-wget https://kuboard.cn/install-script/calico/calico-3.9.2.yaml
+wget https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/calico-3.9.2.yaml
 sed -i "s#192\.168\.0\.0/16#${POD_SUBNET}#" calico-3.9.2.yaml
 kubectl apply -f calico-3.9.2.yaml
