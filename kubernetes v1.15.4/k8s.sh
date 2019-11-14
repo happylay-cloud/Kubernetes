@@ -1,10 +1,21 @@
 #!/bin/bash
 #-------------------------------------------使用kubeadm安装kubernetes_v1.15.4-master管理者---------------------------------
 #-----------------------------------------------------手动输入------------------------------------------------
-read -p "1.设置master名称,默认【k8s-master】：" sethostname
-read -p "2.设置master-ip地址,默认【172.17.16.9】：" setmasterip
-read -p "3.设置master-dns名称,默认【apiserver.k8s】：" apiservername
-read -p "4.设置pod容器所在网段,默认【10.100.0.1/20】：" podsubnet
+
+# 设置master主节点名称
+sethostname="$1"
+# 设置master-ip地址
+setmasterip="$2"
+# 设置master-dns名称
+apiservername="$3"
+# 设置pod容器所在网段
+podsubnet="$4"
+
+# 暂时不能输入
+# read -p "1.设置master名称,默认【k8s-master】：" sethostname
+# read -p "2.设置master-ip地址,默认【172.17.16.9】：" setmasterip
+# read -p "3.设置master-dns名称,默认【apiserver.k8s】：" apiservername
+# read -p "4.设置pod容器所在网段,默认【10.100.0.1/20】：" podsubnet
 
 #------------------------------------------------------------------------------------------------------------
 # 设置主机hostname
