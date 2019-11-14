@@ -17,11 +17,9 @@ Docker 18.09.7
 
 curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/k8s.sh | sh
 
-curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/develop/kubernetes%20v1.16.2/k8s.sh | sh
 # node
-curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/k8s-node.sh | sh
 
-curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/develop/kubernetes%20v1.16.2/k8s-node.sh | sh
+curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/k8s-node.sh | sh
 
 # Kubernetes v1.15.4 安装后的软件版本
 calico 3.8.2
@@ -31,10 +29,10 @@ Docker 18.09.7
 # Kubernetes v1.15.4 安装步骤
 # master
 
-curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/develop/kubernetes%20v1.15.4/k8s.sh | sh
+curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/k8s.sh | sh
 
 # node
 
-curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/develop/kubernetes%20v1.15.4/k8s-node.sh | sh
+curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/k8s-node.sh | sh
 
 
