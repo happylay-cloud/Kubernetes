@@ -28,3 +28,13 @@ calico 3.8.2
 nginx-ingress 1.5.3
 Docker 18.09.7
 
+# Kubernetes v1.15.4 安装步骤
+# master
+
+curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/develop/kubernetes%20v1.15.4/k8s.sh | sh
+
+# node
+
+curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/develop/kubernetes%20v1.15.4/k8s-node.sh | sh
+
+
