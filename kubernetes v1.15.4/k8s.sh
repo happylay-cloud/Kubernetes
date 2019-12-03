@@ -38,8 +38,13 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 #------------------------------------------------------------------------------------------------------------
 # 安装docker及kubelet
 # 在 master 节点和 worker 节点都要执行
-curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/install-kubelet.sh | sh
 
+ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l`
+if [ $ret -ne 0 ]; then
+   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/install-kubelet.sh | sh
+else
+   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/install-kubelet.sh | sh
+fi; 
 #------------------------------------------------------------------------------------------------------------
 #-------------------------------------------初始化 master 节点------------------------------------------------
 # 只在 master 节点执行
@@ -51,8 +56,12 @@ export APISERVER_NAME=$apiservername
 # Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
 export POD_SUBNET=$podsubnet
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/init-master.sh | sh
 
+if [ $ret -ne 0 ]; then
+   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/init_master.sh | sh
+else
+   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/init_master.sh | sh
+fi;
 #------------------------------------------------------------------------------------------------------------
 #-------------------------------------------检查 master 初始化结果--------------------------------------------
 # 只在 master 节点执行
@@ -83,13 +92,21 @@ kubectl get nodes -o wide
 #-------------------------------------------安装 Ingress Controller-------------------------------------------
 # 安装 Ingress Controller
 # 只在 master 节点执行
-kubectl apply -f https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/nginx-ingress.yaml
 
+if [ $ret -ne 0 ]; then
+   kubectl apply -f https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/nginx-ingress.yaml
+else
+   kubectl apply -f https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/nginx-ingress.yaml
+fi; 
 #------------------------------------------------------------------------------------------------------------
 #------------------------------------------------安装 Kuboard------------------------------------------------
 # 安装 Kuboard
-kubectl apply -f https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/kuboard.yaml
 
+if [ $ret -ne 0 ]; then
+   kubectl apply -f https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/kuboard.yaml
+else
+   kubectl apply -f https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/kuboard.yaml
+fi; 
 # 查看 Kuboard 运行状态：
 kubectl get pods -l k8s.eip.work/name=kuboard -n kube-system
 
