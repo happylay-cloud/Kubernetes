@@ -142,7 +142,7 @@ rm -f ./init-master.sh
 
 echo 'k8s安装成功,相关信息查看k8s-info'
 mkdir ./k8s-info
-mv ./calico.yaml ./k8s-info
+mv ./calico-3.9.2.yaml ./k8s-info
 mv ./k8s-join-token.txt ./k8s-info
 mv ./kubeadm-config.yaml ./k8s-info
 mv ./kuboard-token.txt ./k8s-info
