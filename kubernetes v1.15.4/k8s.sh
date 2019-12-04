@@ -61,7 +61,10 @@ echo "APISERVER_NAME=$apiservername" >>  /etc/profile
 
 echo "POD_SUBNET=$podsubnet" >>  /etc/profile
 
-source /etc/profile
+while [ -z "$APISERVER_NAME"  ]
+do
+  source /etc/profile
+done
 
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
