@@ -71,7 +71,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 if [ $ret -ne 0 ]; then
    curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/init-master.sh | sh
 else
-   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/init_master.sh | sh
+   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/init-master.sh | sh
 fi;
 #------------------------------------------------------------------------------------------------------------
 #-------------------------------------------检查 master 初始化结果--------------------------------------------
@@ -135,10 +135,9 @@ kubectl taint node k8s-master  node-role.kubernetes.io/master-
 #------------------------------------------------------------------------------------------------------------
 
 
-
-
-
-
+sed -i "s#MASTER_IP=$setmasterip##g" /etc/profile
+sed -i "s#APISERVER_NAME=$apiservername##g" /etc/profile
+sed -i "s#POD_SUBNET=$podsubnet##g" /etc/profile
 
 
 
