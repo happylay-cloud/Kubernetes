@@ -28,6 +28,10 @@ podsubnet="$4"
 # podsubnet='10.100.0.1/20'
 
 #------------------------------------------------------------------------------------------------------------
+
+sed -i "s#127.0.0.1   $(hostname)##g" /etc/hosts
+sed -i "s#${MASTER_IP}    ${APISERVER_NAME}##g" /etc/profile
+
 #-------------------------------------------修改 hostname-----------------------------------------------------
 # 修改 hostname
 hostnamectl set-hostname $sethostname
@@ -69,6 +73,7 @@ done
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 if [ $ret -ne 0 ]; then
+   source /etc/profile
    curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/init-master.sh | sh
 else
    curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/init-master.sh | sh
@@ -138,8 +143,6 @@ kubectl taint node k8s-master  node-role.kubernetes.io/master-
 sed -i "s#MASTER_IP=$setmasterip##g" /etc/profile
 sed -i "s#APISERVER_NAME=$apiservername##g" /etc/profile
 sed -i "s#POD_SUBNET=$podsubnet##g" /etc/profile
-
-
 
 
 
