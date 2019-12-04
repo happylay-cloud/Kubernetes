@@ -48,7 +48,7 @@ curl -ssL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kub
 
 由于网络问题,第三步需要多次执行才能安装成功,当k8s成功安装redis测试应用,说明helm安装成功，否则重复执行第三步脚本。
 ````
-# 2019.11.14 更新记录
+### 2019.11.14 更新记录
 ### Kubernetes v1.16.2安装步骤-变更
 #### master
 ````
