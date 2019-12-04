@@ -45,6 +45,7 @@ do
 	rm -rf ./linux-amd64
 	#------------------------------------------------------------------------------------------------------------------
 done  
-helm del --purge redis
 rm -f ./helm.zip
-echo 'success'
+rm -f ./redis-1.1.15.tgz
+echo '成功安装helm,预装redis作为测试,执行以下命令进行删除 
+helm del --purge redis '
