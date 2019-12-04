@@ -40,9 +40,9 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l`
 if [ $ret -ne 0 ]; then
-   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/install_kubelet.sh | sh
+   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh | sh
 else
-   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install_kubelet.sh | sh
+   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh | sh
 fi;
 #-----------------------------------------------------------------------------------------------------------------------------
 # 只在 worker 节点执行
