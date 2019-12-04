@@ -13,7 +13,7 @@ else
    unzip ./helm.zip
 fi
 
-while [ ! `helm install --name redis --set "persistence.enabled=false,mariadb.persistence.enabled=false" ali/redis --namespace happylay` ]
+while [ ! `kubectl get pods --namespace=happylay` ]
 do
   	#------------------------------------------------------------------------------------------------------------------
 	# 解压
