@@ -13,7 +13,7 @@ else
    unzip ./helm.zip
 fi
 
-while [ ! `kubectl get pods --namespace=happylay` ]
+while [ ! `kubectl get pods --namespace=happylay` > /dev/null 2>&1 ]
 do
   	#------------------------------------------------------------------------------------------------------------------
 	# 解压
@@ -43,4 +43,6 @@ do
 	rm -rf ./linux-amd64
 	#------------------------------------------------------------------------------------------------------------------
 done  
+helm del --purge redis
 rm -f ./helm.zip
+echo 'success'
