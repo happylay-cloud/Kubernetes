@@ -45,13 +45,10 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l`
 if [ $ret -ne 0 ]; then
-   wget https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh
-   chmod 755 init-master.sh
-   source ./init-master.sh
+   curl -ssl https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh | sh
+
 else
-   wget https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh
-   chmod 755 init-master.sh
-   source ./init-master.sh
+   curl -ssl https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh | sh
 fi;    
 
 #------------------------------------------------------------------------------------------------------------
@@ -67,9 +64,13 @@ export POD_SUBNET=$podsubnet
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 if [ $ret -ne 0 ]; then
-   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/init-master.sh | sh
+   wget https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/init-master.sh
+   chmod 755 ./init-master.sh
+   source ./init-master.sh
 else
-   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/init-master.sh | sh
+   wget https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/init-master.sh
+   chmod 755 ./init-master.sh
+   source ./init-master.sh
 fi; 
 
 #------------------------------------------------------------------------------------------------------------
