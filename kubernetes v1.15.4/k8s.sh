@@ -69,7 +69,7 @@ done
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 if [ $ret -ne 0 ]; then
-   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/init_master.sh | sh
+   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.15.4/install-script/init-master.sh | sh
 else
    curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.15.4/install-script/init_master.sh | sh
 fi;
