@@ -28,6 +28,10 @@ podsubnet="$4"
 # podsubnet='10.100.0.1/16'
 
 #------------------------------------------------------------------------------------------------------------
+
+sed -i "s#127.0.0.1   $(hostname)##g" /etc/hosts
+sed -i "s#${MASTER_IP}    ${APISERVER_NAME}##g" /etc/hosts
+
 #-------------------------------------------修改 hostname-----------------------------------------------------
 # 修改 hostname
 hostnamectl set-hostname $sethostname
@@ -41,9 +45,13 @@ echo "127.0.0.1   $(hostname)" >> /etc/hosts
 
 ret=`curl -s  https://api.ip.sb/geoip | grep China | wc -l`
 if [ $ret -ne 0 ]; then
-   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/install_kubelet.sh | sh
+   wget https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh
+   chmod 755 init-master.sh
+   source ./init-master.sh
 else
-   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install_kubelet.sh | sh
+   wget https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/install-kubelet.sh
+   chmod 755 init-master.sh
+   source ./init-master.sh
 fi;    
 
 #------------------------------------------------------------------------------------------------------------
@@ -59,9 +67,9 @@ export POD_SUBNET=$podsubnet
 echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 if [ $ret -ne 0 ]; then
-   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/init_master.sh | sh
+   curl -sSL https://gitee.com/happylay/Kubernetes/raw/master/kubernetes%20v1.16.2/install-script/init-master.sh | sh
 else
-   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/init_master.sh | sh
+   curl -sSL https://raw.githubusercontent.com/happylay-cloud/Kubernetes/master/kubernetes%20v1.16.2/install-script/init-master.sh | sh
 fi; 
 
 #------------------------------------------------------------------------------------------------------------
@@ -124,6 +132,19 @@ echo '
 kubectl taint node k8s-master  node-role.kubernetes.io/master-
 
 #------------------------------------------------------------------------------------------------------------
+
+sed -i "s#MASTER_IP=$setmasterip##g" /etc/profile
+sed -i "s#APISERVER_NAME=$apiservername##g" /etc/profile
+sed -i "s#POD_SUBNET=$podsubnet##g" /etc/profile
+
+rm -f ./init-master.sh
+
+echo 'k8s安装成功,相关信息查看k8s-info'
+mkdir ./k8s-info
+mv ./calico.yaml ./k8s-info
+mv ./k8s-join-token.txt ./k8s-info
+mv ./kubeadm-config.yaml ./k8s-info
+mv ./kuboard-token.txt ./k8s-info
 
 
 
